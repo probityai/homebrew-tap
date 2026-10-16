@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  readme:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - run: python3 scripts/readme-lint.py README.md
+      - run: python3 -m unittest discover -s scripts/tests -v
+
+  formula:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        formula:
+          - agent-evidence-admission
+          - agent-evidence-observer
+          - agent-evidence-vectors
+          - probity-verify
+    runs-on: ${{ matrix.os }}
+    env:
+      HOMEBREW_NO_AUTO_UPDATE: "1"
+    steps:
+      - id: brew
+        uses: Homebrew/actions/setup-homebrew@4790763c0a3ba4036f72634dc079c4a7dfcd4878 # main
+      - run: brew style probityai/tap/${{ matrix.formula }}
+      - run: brew audit --strict probityai/tap/${{ matrix.formula }}
+      - run: brew install --build-from-source --verbose probityai/tap/${{ matrix.formula }}
+      - run: brew test --verbose probityai/tap/${{ matrix.formula }}
