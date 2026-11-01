@@ -2,7 +2,7 @@ class AgentEvidenceObserver < Formula
   include Language::Python::Virtualenv
 
   desc "Record brokered agent writes and check selected native reports offline"
-  homepage "https://github.com/probityai/probity/tree/main/packages/observer"
+  homepage "https://github.com/probityai/probity/tree/main/packages/agent-evidence-observer"
   url "https://files.pythonhosted.org/packages/dd/2c/5d28d0c35c2cec610056949f48d14c53bd7715a3f9a7c0706a15a9776f6f/agent_evidence_observer-0.0.2.tar.gz"
   sha256 "f358837bf09c793887972a4164b21bbdc7121a8cb75492a715dc5626159b0b90"
   license "Apache-2.0"
