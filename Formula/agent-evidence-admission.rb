@@ -3,8 +3,8 @@ class AgentEvidenceAdmission < Formula
 
   desc "Check that an artifact has the digest its SBOM or attestation names"
   homepage "https://github.com/probityai/agent-evidence-vectors/tree/main/packages/admission"
-  url "https://files.pythonhosted.org/packages/60/91/4718a0385f7b4c5aa23310c47f2b1e3835d7cac46886f17ee58b110e3906/agent_evidence_admission-0.1.2.tar.gz"
-  sha256 "183d20411894dd046cb3eaad828cf0fe8aad7156bf8202c2ddb60664cddce33d"
+  url "https://files.pythonhosted.org/packages/a1/4f/7a6524aaf686ae3d1051aa369ee2ba4e5a5b5f48342d50577da3732f486f/agent_evidence_admission-0.2.0.tar.gz"
+  sha256 "9333522df2ac416fc15a3e284fcbbc28d07c6a72841ee0c5f705b2023110b6f4"
   license "Apache-2.0"
 
   depends_on "python@3.14"
