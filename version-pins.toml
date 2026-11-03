@@ -12,3 +12,6 @@ repository = "probityai/homebrew-tap"
 
 [scan]
 include = ["README.md", "Formula/*.rb"]
+
+[refresh]
+settle_hours = 25
