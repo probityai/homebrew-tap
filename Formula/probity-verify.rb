@@ -8,6 +8,7 @@ class ProbityVerify < Formula
   license "Apache-2.0"
 
   depends_on "cryptography"
+  depends_on "libyaml"
   depends_on "python@3.14"
 
   def install
