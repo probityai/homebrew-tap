@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - run: python3 scripts/readme-lint.py README.md
       - run: python3 -m unittest discover -s scripts/tests -v
-      - uses: probityai/.github/actions/version-pins@27c2b8a1dc13ce58e47b020c7300c9196d6a6dd7 # main
+      - uses: probityai/.github/actions/version-pins@389f391daa3001be6a5d896879bda3d69f1f781e # main
         with:
           command: check
 
