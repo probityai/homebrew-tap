@@ -13,7 +13,7 @@ Each formula installs one pinned PyPI release into its own virtual environment. 
 | Formula | Commands | Source |
 | --- | --- | --- |
 | `probity-verify` 0.3.0 | `probity-verify`, `probity-bundle`, `probity-index` | [probityai/probity](https://github.com/probityai/probity/tree/main/packages/probity-verify) |
-| `agent-evidence-vectors` 0.31.0 | `agent-evidence-vectors`, `agent-evidence-heldout` | [probityai/agent-evidence-vectors](https://github.com/probityai/agent-evidence-vectors) |
+| `agent-evidence-vectors` 0.31.2 | `agent-evidence-vectors`, `agent-evidence-heldout` | [probityai/agent-evidence-vectors](https://github.com/probityai/agent-evidence-vectors) |
 | `agent-evidence-admission` 0.2.0 | `agent-evidence-admission` | [probityai/agent-evidence-vectors/packages/admission](https://github.com/probityai/agent-evidence-vectors/tree/main/packages/admission) |
 | `agent-evidence-observer` 0.1.3 | `agent-evidence-observer`, `agent-evidence-admit` | [probityai/probity](https://github.com/probityai/probity/tree/main/packages/agent-evidence-observer) |
 
