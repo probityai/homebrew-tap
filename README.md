@@ -13,9 +13,9 @@ Each formula installs one pinned PyPI release into its own virtual environment. 
 | Formula | Commands | Source |
 | --- | --- | --- |
 | `probity-verify` 0.1.1 | `probity-verify`, `probity-bundle`, `probity-index` | [probityai/probity](https://github.com/probityai/probity/tree/main/packages/probity-verify) |
-| `agent-evidence-vectors` 0.18.1 | `agent-evidence-vectors`, `agent-evidence-heldout` | [probityai/agent-evidence-vectors](https://github.com/probityai/agent-evidence-vectors) |
-| `agent-evidence-admission` 0.1.0 | `agent-evidence-admission` | [probityai/agent-evidence/packages/admission](https://github.com/probityai/agent-evidence/tree/main/packages/admission) |
-| `agent-evidence-observer` 0.0.1 | `agent-evidence-observer`, `agent-evidence-admit` | [probityai/probity](https://github.com/probityai/probity/tree/main/packages/agent-evidence-observer) |
+| `agent-evidence-vectors` 0.23.0 | `agent-evidence-vectors`, `agent-evidence-heldout` | [probityai/agent-evidence-vectors](https://github.com/probityai/agent-evidence-vectors) |
+| `agent-evidence-admission` 0.1.2 | `agent-evidence-admission` | [probityai/agent-evidence-vectors/packages/admission](https://github.com/probityai/agent-evidence-vectors/tree/main/packages/admission) |
+| `agent-evidence-observer` 0.0.2 | `agent-evidence-observer`, `agent-evidence-admit` | [probityai/probity](https://github.com/probityai/probity/tree/main/packages/agent-evidence-observer) |
 
 Running `agent-evidence-vectors` with no arguments checks the bundled conformance vectors against the reference verifier and prints one PASS or FAIL row per vector:
 

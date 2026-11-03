@@ -1,0 +1,24 @@
+name: registry-verify
+
+# Fails when a family lock in version-pins.toml lags its newest PyPI release by more
+# than one release or one day, which is the window pin-refresh has to move it.
+
+on:
+  schedule:
+    - cron: "17 7 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  registry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: probityai/.github/actions/version-pins@27c2b8a1dc13ce58e47b020c7300c9196d6a6dd7 # main
+        with:
+          command: registry

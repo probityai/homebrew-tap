@@ -2,7 +2,7 @@ class ProbityVerify < Formula
   include Language::Python::Virtualenv
 
   desc "Check claims against pinned evidence offline, with replayable decisions"
-  homepage "https://github.com/probityai/probity-verify"
+  homepage "https://github.com/probityai/probity/tree/main/packages/probity-verify"
   url "https://files.pythonhosted.org/packages/49/58/53dc019ccfbbca461de6b6c090a2414eb429e64c188059cef09c02972c64/probity_verify-0.1.1.tar.gz"
   sha256 "ed745e2d5b07beaae5993399b1d551062c209efa5df8ae5961b39bf2d6ed3d16"
   license "Apache-2.0"
