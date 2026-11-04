@@ -3,8 +3,8 @@ class AgentEvidenceVectors < Formula
 
   desc "Conformance corpora and reference verifiers for agent evidence records"
   homepage "https://github.com/probityai/agent-evidence-vectors"
-  url "https://files.pythonhosted.org/packages/aa/29/a1e0983b0909791367004165b8bf5fe54bd60c46d895e91a150584792862/agent_evidence_vectors-0.31.2.tar.gz"
-  sha256 "36d4f0a1885a8f03c65cd257ae5642b7510b03505713eb6484d79173e7716d30"
+  url "https://files.pythonhosted.org/packages/07/bc/5386aeaf42dfe56fa41c90a366efe66cb6b77bd88465317d19bfdd3ae88c/agent_evidence_vectors-0.33.0.tar.gz"
+  sha256 "d5181d83db183f16be074e7a7ba00365aea480f33646fb86f1ccf773865b63c9"
   license "Apache-2.0"
 
   depends_on "python@3.14"

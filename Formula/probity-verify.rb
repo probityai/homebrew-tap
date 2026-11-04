@@ -3,8 +3,8 @@ class ProbityVerify < Formula
 
   desc "Check claims against pinned evidence offline, with replayable decisions"
   homepage "https://github.com/probityai/probity/tree/main/packages/probity-verify"
-  url "https://files.pythonhosted.org/packages/46/ff/1af2eaece304bfa15360857827d48fe5c86e1a2442bd57070e8145471103/probity_verify-0.3.0.tar.gz"
-  sha256 "fac577dbb0bc4dd0ed6d056c5afda7a788654298c14d4bd8a581c5edcd643634"
+  url "https://files.pythonhosted.org/packages/b3/f0/9a59dc99b652eea24b50540e7c665191c75405acf4a76b9c05941d817734/probity_verify-0.4.0.tar.gz"
+  sha256 "3cc4b0498d991995ec934c240b84a927990669b8044083ffcb7b342c54302bbc"
   license "Apache-2.0"
 
   depends_on "cryptography"
