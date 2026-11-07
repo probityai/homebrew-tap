@@ -3,8 +3,8 @@ class AgentEvidenceObserver < Formula
 
   desc "Record brokered agent writes and check selected native reports offline"
   homepage "https://github.com/probityai/probity/tree/main/packages/agent-evidence-observer"
-  url "https://files.pythonhosted.org/packages/bd/c3/27f273c261189bceecc33ef62e6e686cb147b3e6f21abbbe89bc7445d0d8/agent_evidence_observer-0.1.3.tar.gz"
-  sha256 "3face40feea33f3f870157fd652b430615cfe2b37d189d9afc45404d388ff694"
+  url "https://files.pythonhosted.org/packages/6a/91/17d5f53b92d326765cce389dfd7e8b8400b39a0b6d54d16890a526187fab/agent_evidence_observer-0.2.0.tar.gz"
+  sha256 "f2f9c775a941ef360bfda4eb55508d7f596a95082faa52521987303f6a94a714"
   license "Apache-2.0"
 
   depends_on "cryptography"
