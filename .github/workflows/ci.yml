@@ -4,12 +4,47 @@ on:
   push:
     branches: [main]
   pull_request:
+  merge_group:
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  # A newer push to the same pull request supersedes the older run; merge-queue
+  # batches and pushes to main always finish.
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
 jobs:
+  # Path selection. The formula matrix (eight jobs, half on macOS) runs unless
+  # every changed file is documentation or the README lint. Any other path, a
+  # workflow change, a push to main, a merge-queue batch or a manual run
+  # selects it.
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      formula: ${{ steps.select.outputs.formula }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - id: select
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ "$EVENT" != pull_request ]; then
+            echo "formula=true" >> "$GITHUB_OUTPUT"; exit 0
+          fi
+          changed=$(git diff --name-only "$BASE" HEAD) || { echo "formula=true" >> "$GITHUB_OUTPUT"; exit 0; }
+          echo "$changed"
+          if [ -n "$changed" ] && ! printf '%s\n' "$changed" | grep -qvE '^(README\.md|[^/]*\.md|docs/.*|scripts/readme-lint\.py)$'; then
+            echo "formula=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "formula=true" >> "$GITHUB_OUTPUT"
+          fi
+
   readme:
     runs-on: ubuntu-latest
     steps:
@@ -21,6 +56,8 @@ jobs:
           command: check
 
   formula:
+    needs: changes
+    if: needs.changes.outputs.formula == 'true'
     strategy:
       fail-fast: false
       matrix:
@@ -40,3 +77,23 @@ jobs:
       - run: brew audit --strict probityai/tap/${{ matrix.formula }}
       - run: brew install --build-from-source --verbose probityai/tap/${{ matrix.formula }}
       - run: brew test --verbose probityai/tap/${{ matrix.formula }}
+
+  # The one status the main ruleset requires. It runs even when a job fails or
+  # is skipped, and passes only when every job it needs passed or was skipped
+  # by path selection.
+  ci-ok:
+    if: always()
+    needs: [changes, readme, formula]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Every selected job passed
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          echo "job results: $RESULTS"
+          for r in $RESULTS; do
+            case "$r" in
+              success|skipped) ;;
+              *) echo "a required job ended $r"; exit 1 ;;
+            esac
+          done
