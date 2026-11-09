@@ -21,6 +21,6 @@ class AgentEvidenceObserver < Formula
 
   test do
     assert_match "usage: agent-evidence-observer", shell_output("#{bin}/agent-evidence-observer --help")
-    assert_match "usage: agent-evidence-admit", shell_output("#{bin}/agent-evidence-admit --help")
+    assert_match "usage: agent-evidence-read-native", shell_output("#{bin}/agent-evidence-read-native --help")
   end
 end
