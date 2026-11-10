@@ -3,13 +3,18 @@ class ProbityVerify < Formula
 
   desc "Check claims against pinned evidence offline, with replayable decisions"
   homepage "https://github.com/probityai/probity/tree/main/packages/probity-verify"
-  url "https://files.pythonhosted.org/packages/3e/6e/29ef11a9950dc3264259562608f0116f864e4d0a3bd0e0354e266730e8b7/probity_verify-0.4.1.tar.gz"
-  sha256 "d7a03cb479d909b2bdcf6fb64eca16210ec38fc92a4e9744ce35635065607f45"
+  url "https://files.pythonhosted.org/packages/ae/04/1c0bf82f6bd21f93f5abdc88a7f03a550a7a4d4fb122247a802036cb3473/probity_verify-0.5.1.tar.gz"
+  sha256 "7278825840ec00463e72a82e3f1d172578ce175a9ac65d9936cd032300a169b3"
   license "Apache-2.0"
 
   depends_on "cryptography"
   depends_on "libyaml"
   depends_on "python@3.14"
+
+  resource "agent-evidence-verify" do
+    url "https://files.pythonhosted.org/packages/7c/1b/546cf0bcd2e67bf213e625bb147d580cfef296f4ba5268482c1fe666378b/agent_evidence_verify-0.5.1.tar.gz"
+    sha256 "c12710089e6abc559ca79b8c15e3b2982f368ec5392d66dd1dd00d835aabf3ec"
+  end
 
   resource "agent-evidence-vocabulary" do
     url "https://files.pythonhosted.org/packages/25/5c/150344bc7e76ce60b7fb4977d6c731e79f7b233ebc0ca0fdb6fda57e7d15/agent_evidence_vocabulary-0.9.0.tar.gz"
@@ -26,8 +31,7 @@ class ProbityVerify < Formula
   end
 
   test do
-    assert_match "usage: probity-verify", shell_output("#{bin}/probity-verify --help")
-    assert_match "usage: probity-bundle", shell_output("#{bin}/probity-bundle --help")
-    system libexec/"bin/python", "-c", "import probity_verify"
+    assert_match "usage: agent-evidence-verify", shell_output("#{bin}/probity-verify --help")
+    system libexec/"bin/python", "-c", "import agent_evidence_verify"
   end
 end
