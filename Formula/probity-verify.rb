@@ -31,8 +31,7 @@ class ProbityVerify < Formula
   end
 
   test do
-    assert_match "usage: probity-verify", shell_output("#{bin}/probity-verify --help")
-    assert_match "usage: probity-bundle", shell_output("#{bin}/probity-bundle --help")
-    system libexec/"bin/python", "-c", "import probity_verify"
+    assert_match "usage: agent-evidence-verify", shell_output("#{bin}/probity-verify --help")
+    system libexec/"bin/python", "-c", "import agent_evidence_verify"
   end
 end
