@@ -35,7 +35,7 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - id: brew
         uses: Homebrew/actions/setup-homebrew@4790763c0a3ba4036f72634dc079c4a7dfcd4878 # main
-      - uses: probityai/.github/actions/pin-refresh@ca2ba06de3bc0fb385e81a338873cbf26a3eaaf5 # main
+      - uses: probityai/.github/actions/pin-refresh@254c480fa2f8fe086de36fcee1b8d17df731b6b9 # main
         with:
           ci: ci.yml
           formulas: "true"
