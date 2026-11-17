@@ -17,11 +17,16 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
+  # CI runs once per batch: on a merge-train/* pull request, in the merge queue, on main
+  # or by hand. On a plain pull request every job is skipped, and a skipped ci-ok counts
+  # as passed for the ruleset.
+  #
   # Path selection. The formula matrix (eight jobs, half on macOS) runs unless
   # every changed file is documentation or the README lint. Any other path, a
   # workflow change, a push to main, a merge-queue batch or a manual run
   # selects it.
   changes:
+    if: ${{ github.event_name != 'pull_request' || startsWith(github.head_ref, 'merge-train/') }}
     runs-on: ubuntu-latest
     outputs:
       formula: ${{ steps.select.outputs.formula }}
@@ -46,6 +51,7 @@ jobs:
           fi
 
   readme:
+    if: ${{ github.event_name != 'pull_request' || startsWith(github.head_ref, 'merge-train/') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -82,7 +88,7 @@ jobs:
   # is skipped, and passes only when every job it needs passed or was skipped
   # by path selection.
   ci-ok:
-    if: always()
+    if: ${{ (github.event_name != 'pull_request' || startsWith(github.head_ref, 'merge-train/')) && always() }}
     needs: [changes, readme, formula]
     runs-on: ubuntu-latest
     steps:
